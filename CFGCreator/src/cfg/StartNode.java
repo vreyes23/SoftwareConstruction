@@ -1,13 +1,29 @@
 package cfg;
 
 public class StartNode {
+	private StartNode nodeA = null; //(Knows node A is null) No Entry, 1 Exit
+	private StartNode startnode; //Start Node
 	
-	//Knows node B is null
+	public StartNode()
+	{
+		this.startnode = nodeA;
+	}//end StartNode constructor
 	
-	//Knows type is "StartNode"
+	public StartNode(StartNode start) 
+	{
+	     //set startnode equals to start;
+		startnode = start;
+	}//end StartNode constructor
+	
+	public StartNode getStartNode()
+	{
+	      // Return the startnode variable;
+		return startnode;
+	}//end getStartNode() function
 
-	public StartNode() {
-		// TODO Auto-generated constructor stub
-	}
-
+	public boolean isSameNode(StartNode st)
+	{
+	     //Return of startnode == st.StartNode()
+		   return (startnode == st.getStartNode());
+	}//end isSameNode() function	
 }
