@@ -59,14 +59,14 @@ public class FileHandler extends JFrame {
 	   	 try{
 	   		 //Read in the input file passed through the param: path
 	   		 fstream = new FileInputStream(path);
-	   		 //Print ìFile acceptedî
+	   		 //Print ‚ÄúFile accepted‚Äù
 	   		 System.out.println("File accepted");
 	   		 isValidPath = true;
 	   	 }//end try
 	   	 catch (IOException e){
 	   		 //Throw an Input Output Exception
 	   		 System.err.println("Unable opening file "+path+".\n"+e.getMessage());
-	   		 //Print ìplease try again, file not acceptedî
+	   		 //Print ‚Äúplease try again, file not accepted‚Äù
 	   		 System.out.println("Please try again, File not accepted");
 	   		 isValidPath = false;
 	   		 
@@ -93,10 +93,10 @@ public class FileHandler extends JFrame {
 
 	
 	
-	
+	/*
 	public static void main (String [] args){
 		FileHandler filehandler = new FileHandler();
 		filehandler.getFileAddress();
 	}
-	
+	*/
 }
