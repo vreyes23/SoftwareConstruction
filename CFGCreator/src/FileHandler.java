@@ -1,41 +1,47 @@
-package File;
+import javax.swing.*;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Scanner;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 
-public class FileHandler {
 
-   
- public void readFileInput(String path)
-   {
+public class FileHandler extends JFrame {
+	
+	JLabel addressLabel;
+	JTextField addressText;
+	JButton submitButton;
+	String address;
+	JPanel panel;
+	
+	
+	public void getFileAddress(){
+		panel = new JPanel();
+		addressLabel = new JLabel();
+		addressLabel.setText("File Address: ");
+		addressText = new JTextField();
+		addressText.setPreferredSize(new Dimension(320, 20));
+
+		submitButton = new JButton("Submit");
+		submitButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				address = addressText.getText();
+				System.out.println("" + address);
+			}
+		});
+		panel.add(addressLabel,BorderLayout.LINE_START);
+		panel.add(addressText,BorderLayout.LINE_END);
+		panel.add(submitButton,BorderLayout.SOUTH);
 		
-		FileInputStream fstream = null;
+		add(panel);
+		pack();
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		try{
-			//Read in the input file passed through the param: path
-			fstream = new FileInputStream(path);
-			//Print “File accepted”
-			System.out.println("File accepted");
-		}//end try
-		catch (IOException e){
-			//Throw an Input Output Exception
-			System.err.println("Unable opening file "+path+".\n"+e.getMessage());
-			//Print “please try again, file not accepted”
-			System.out.println("Please try again, File not accepted");
-			System.exit(1);
-		}//end catch
-		
-		Scanner s = new Scanner(fstream);
-		s.close();
-		try{
-			//Close the input file after reading in all the contents of the File
-			fstream.close();
-		}//end try
-		catch (IOException e){
-			//Throw an Input/Output Exception if a problem occurs 
-			System.err.println("Error closing file "+path+".\n"+e.getMessage());
-		}//end catch
-  }
-
+	}//end getFileAddress method
+	
+	public static void main (String [] args){
+		FileHandler filehandler = new FileHandler();
+		filehandler.getFileAddress();
+	}
 }
